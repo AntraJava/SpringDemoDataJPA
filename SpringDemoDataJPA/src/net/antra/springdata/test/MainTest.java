@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import net.antra.springdata.dao.DepartmentDAO;
+import net.antra.springdata.entity.Department;
 import net.antra.springdata.entity.Employee;
 import net.antra.springdata.entity.TestEmp;
 import net.antra.springdata.service.DepartmentService;
@@ -28,7 +30,18 @@ public class MainTest {
  	@Autowired
 	EmployeeService empService;
  	
+ 	@Autowired
+ 	DepartmentDAO deptDAO;
+ 	
  	@Test
+ 	public void testA(){
+ 		Department dept = deptDAO.findByEmail("asd@fd.sd");
+ 		System.out.println(dept.getName());
+ 		assertTrue(dept!=null);
+ 	}
+ 	
+ 	@Test
+ 	@Ignore
     public void testE() {
  		Employee emp = empService.findEmpByFirstNameAndLastName("Dawei","Zhuang");
  		System.out.println(emp.getFirstName());

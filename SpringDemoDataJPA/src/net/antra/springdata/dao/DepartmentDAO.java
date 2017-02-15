@@ -14,5 +14,7 @@ public interface DepartmentDAO  extends JpaRepository<Department, Integer>{
 	List<Department> findAllDepartments();
 	@Query("select DISTINCT OBJECT(d) from Department d")
 	List<Department> findBasicDeptInfo();
+	
+	Department findByEmail(String email);
 
 }
